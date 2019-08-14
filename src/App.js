@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import DashBoard from "./components/layout/DashBoard";
+import AppNavBar from "./components/layout/AppNavBar";
+import AddClient from "./components/clients/AddClient";
+import ClientDetails from "./components/clients/clientDetails";
+import EditClient from "./components/clients/EditClient";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <AppNavBar />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={DashBoard} />
+            <Route exact path="/client/add" component={AddClient} />
+            <Route exact path="/client/login" component={Login} />
+            <Route exact path="/client/register" component={Register} />
+            <Route exact path="/client/:id" component={ClientDetails} />
+            <Route exact path="/client/edit/:id" component={EditClient} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
