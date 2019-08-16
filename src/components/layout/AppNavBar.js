@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class AppNavBar extends Component {
+  // clientLogout = e => {
+  //   ;
+  // };
+
   render() {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-secondary mb-4">
@@ -24,11 +28,16 @@ class AppNavBar extends Component {
             style={{ position: "relative" }}
           >
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  Dashboard
-                </Link>
-              </li>
+              {this.props.userInfo ? (
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Dashboard
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+
               {!this.props.userInfo ? (
                 <React.Fragment>
                   <li className="nav-item">
@@ -58,9 +67,13 @@ class AppNavBar extends Component {
                   </li>
 
                   <li className="nav-item" style={{ display: "inline-block" }}>
-                    <Link to="/client/logout" className="nav-link">
+                    <a
+                      href="#!"
+                      className="nav-link"
+                      onClick={this.props.logoutclient}
+                    >
                       Logout
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               )}
@@ -78,4 +91,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(AppNavBar);
+const mapDispatchToProps = dispatch => {
+  return {
+    logoutclient: () => dispatch({ type: "LOGOUTCLIENT", payload: null })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppNavBar);

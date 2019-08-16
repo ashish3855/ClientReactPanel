@@ -14,6 +14,11 @@ const userReducer = (state = initialState, action) => {
         ...state,
         userInfo: action.email
       };
+    case "LOGOUTCLIENT":
+      return {
+        ...state,
+        userInfo: null
+      };
     default:
       return state;
   }
