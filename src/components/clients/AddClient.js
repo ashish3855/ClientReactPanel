@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { fb } from "../../firebase";
 
 class AddClient extends Component {
@@ -28,7 +29,7 @@ class AddClient extends Component {
         lastName: this.state.lastName,
         email: this.state.email,
         phone: this.state.phone,
-        balance: this.state.balance
+        balance: this.state.balance === "" ? 0 : this.state.balance
       });
 
     this.setState({
@@ -111,6 +112,7 @@ class AddClient extends Component {
                   name="balance"
                   onChange={this.onChange}
                   value={this.state.balance}
+                  disabled={this.props.disableBalanceOnAdd}
                 />
               </div>
               <div className="form-group">
@@ -128,4 +130,10 @@ class AddClient extends Component {
   }
 }
 
-export default AddClient;
+const mapStateToProps = state => {
+  return {
+    disableBalanceOnAdd: state.setting.settings.disableBalanceOnAdd
+  };
+};
+
+export default connect(mapStateToProps)(AddClient);

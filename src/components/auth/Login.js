@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fb } from "../../firebase";
 import "firebase/auth";
 import { connect } from "react-redux";
+import Alert from "../layout/Alert";
 
 class Login extends Component {
   state = {
@@ -19,27 +20,24 @@ class Login extends Component {
     e.preventDefault();
     fb.auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .catch(function(error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ...
-      })
       .then(res => {
         this.props.userInfo(res.user.providerData[0].email);
+        this.setState({
+          email: "",
+          password: ""
+        });
+
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        this.props.notifyUser({
+          messageType: "error",
+          message: "Username / Password is wrong"
+        });
+        setTimeout(() => {
+          this.props.removeMsg();
+        }, 3000);
       });
-    // const user = fb.auth().currentUser;
-    // if (user) {
-    //   console.log("user Logged in!", user);
-    // } else {
-    //   console.log("Something Wrong!");
-    // }
-    this.setState({
-      email: "",
-      password: ""
-    });
-    this.props.history.push("/");
   };
 
   render() {
@@ -53,6 +51,7 @@ class Login extends Component {
             </h1>{" "}
           </div>
           <form onSubmit={this.onSubmit}>
+            <Alert alertMessage={this.props.message} />
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -93,13 +92,21 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    userInfo: email => dispatch({ type: "USERINFO", email: email })
+    message: state.notify.message
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    userInfo: email => dispatch({ type: "USERINFO", email: email }),
+    notifyUser: notifymessage =>
+      dispatch({ type: "NOTIFY_USER", payload: notifymessage }),
+    removeMsg: () => dispatch({ type: "REMOVEMSG", payload: null })
+  };
+};
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

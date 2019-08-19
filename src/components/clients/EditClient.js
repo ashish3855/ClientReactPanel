@@ -109,6 +109,7 @@ class EditClient extends Component {
                   name="balance"
                   defaultValue={selectedUser[0].balance}
                   ref={this.textInputbalance}
+                  disabled={this.props.disableBalanceOnEdit}
                 />
               </div>
               <div className="form-group">
@@ -128,7 +129,8 @@ class EditClient extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    clients: state.userReducer.clients,
+    disableBalanceOnEdit: state.setting.settings.disableBalanceOnEdit
   };
 };
 

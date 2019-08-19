@@ -35,8 +35,10 @@ class Clients extends Component {
   }
 
   render() {
-    console.log("i ran");
-    if (this.props.clients.length !== 0) {
+    if (
+      this.props.clients.length !== 0 ||
+      this.props.clients.length === undefined
+    ) {
       return (
         <div>
           <div className="row">
@@ -91,7 +93,7 @@ class Clients extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    clients: state.userReducer.clients
   };
 };
 

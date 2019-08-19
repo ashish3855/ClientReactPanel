@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import "firebase/database";
 import App from "./App";
 import userReducer from "./reducer";
+import notifyReducer from "./reducers/notifyReducer";
+import { settingsReducer } from "./reducers/settingsReducer";
 
 function saveToLocalStorage(state) {
   try {
@@ -28,8 +30,14 @@ function loadFromLocalStorage() {
 
 const persistedState = loadFromLocalStorage();
 
-const store = createStore(
+const rootReducer = combineReducers({
   userReducer,
+  notify: notifyReducer,
+  setting: settingsReducer
+});
+
+const store = createStore(
+  rootReducer,
   persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

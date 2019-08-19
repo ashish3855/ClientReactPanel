@@ -111,17 +111,22 @@ class clientDetails extends Component {
                   <td>
                     <strong className="text-secondary">$</strong>
                     {parseFloat(selectedUser[0].balance).toFixed(2)}
-                    <a
-                      href="#!"
-                      onClick={() =>
-                        this.setState({
-                          showBalanceUpdate: !this.state.showBalanceUpdate
-                        })
-                      }
-                    >
-                      {" "}
-                      <i className="fa fa-pencil" />{" "}
-                    </a>
+                    {this.props.disableBalanceOnEdit ? (
+                      ""
+                    ) : (
+                      <a
+                        href="#!"
+                        onClick={() =>
+                          this.setState({
+                            showBalanceUpdate: !this.state.showBalanceUpdate
+                          })
+                        }
+                      >
+                        {" "}
+                        <i className="fa fa-pencil" />{" "}
+                      </a>
+                    )}
+
                     {this.state.showBalanceUpdate ? updateForm : null}
                   </td>
                 </tr>
@@ -158,7 +163,8 @@ class clientDetails extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    clients: state.userReducer.clients,
+    disableBalanceOnEdit: state.setting.settings.disableBalanceOnEdit
   };
 };
 

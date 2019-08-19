@@ -5,10 +5,12 @@ import AppNavBar from "./components/layout/AppNavBar";
 import AddClient from "./components/clients/AddClient";
 import ClientDetails from "./components/clients/clientDetails";
 import EditClient from "./components/clients/EditClient";
+import Settings from "./settings/Settings";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <Router>
       <div className="App">
@@ -16,6 +18,7 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/" component={DashBoard} />
+            <Route exact path="/settings" component={Settings} />
             <Route exact path="/client/add" component={AddClient} />
             <Route exact path="/client/login" component={Login} />
             <Route exact path="/client/register" component={Register} />

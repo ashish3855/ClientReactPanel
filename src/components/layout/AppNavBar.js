@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 class AppNavBar extends Component {
-  // clientLogout = e => {
-  //   ;
-  // };
+  logout = e => {
+    e.preventDefault();
+    this.props.logoutclient();
+    this.props.history.push("/client/login");
+  };
 
   render() {
     return (
@@ -29,11 +31,18 @@ class AppNavBar extends Component {
           >
             <ul className="navbar-nav mr-auto">
               {this.props.userInfo ? (
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Dashboard
-                  </Link>
-                </li>
+                <React.Fragment>
+                  <li>
+                    <Link to="/" className="nav-link">
+                      Dashboard
+                    </Link>
+                  </li>{" "}
+                  <li className="nav-item" style={{ display: "inline-block" }}>
+                    <Link className="nav-link" to="/settings">
+                      Settings
+                    </Link>
+                  </li>
+                </React.Fragment>
               ) : (
                 ""
               )}
@@ -63,17 +72,12 @@ class AppNavBar extends Component {
                     className="nav-item"
                     style={{ display: "inline-block", color: "white" }}
                   >
-                    {this.props.userInfo}
+                    Welcome {this.props.userInfo}
                   </li>
-
                   <li className="nav-item" style={{ display: "inline-block" }}>
-                    <a
-                      href="#!"
-                      className="nav-link"
-                      onClick={this.props.logoutclient}
-                    >
+                    <Link className="nav-link" onClick={e => this.logout(e)}>
                       Logout
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -87,7 +91,7 @@ class AppNavBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userInfo
+    userInfo: state.userReducer.userInfo
   };
 };
 
@@ -97,7 +101,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppNavBar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AppNavBar)
+);

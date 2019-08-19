@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fb } from "../../firebase";
 import "firebase/auth";
+import { connect } from "react-redux";
 
 class Register extends Component {
   state = {
@@ -23,7 +24,6 @@ class Register extends Component {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ...
       });
     this.setState({
       email: "",
@@ -41,45 +41,59 @@ class Register extends Component {
               <i className="fa fa-user" /> Register
             </h1>{" "}
           </div>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                minLength="2"
-                required
-                placeholder="Email"
-                onChange={this.onChange}
-                value={this.state.email}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Password">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                minLength="2"
-                required
-                placeholder="Password"
-                onChange={this.onChange}
-                value={this.state.password}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="submit"
-                value="Register"
-                className="btn btn-primary btn-block"
-              />
-            </div>
-          </form>
+          {this.props.allowRegistration ? (
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  minLength="2"
+                  required
+                  placeholder="Email"
+                  onChange={this.onChange}
+                  value={this.state.email}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="Password">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  minLength="2"
+                  required
+                  placeholder="Password"
+                  onChange={this.onChange}
+                  value={this.state.password}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="submit"
+                  value="Register"
+                  className="btn btn-primary btn-block"
+                />
+              </div>
+            </form>
+          ) : (
+            <b>
+              <div className="mt-5 text-center">
+                Registration Limit have fulfilled, Try Another Time!
+              </div>
+            </b>
+          )}{" "}
         </div>
       </div>
     );
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {
+    allowRegistration: state.setting.settings.allowRegistration
+  };
+};
+
+export default connect(mapStateToProps)(Register);

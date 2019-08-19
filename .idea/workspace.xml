@@ -2,10 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec98e90c-73ba-4f8e-b87e-166d1f3fcf4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/reactTemplatesPlugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/reactTemplatesPlugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/react_firebase_clientpanel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react_firebase_clientpanel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clients/AddClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clients/AddClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clients/Clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clients/Clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clients/EditClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clients/EditClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/clients/clientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clients/clientDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/AppNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/AppNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/DashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/DashBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/createReduxStore.old.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/createReduxStore.old.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/createStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/createStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
     </list>
